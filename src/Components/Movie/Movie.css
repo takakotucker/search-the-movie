@@ -1,0 +1,62 @@
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+
+img {
+  margin-top: 4%;
+}
+
+h1 {
+  color: #444;
+  margin-top: 2%;
+  font-size: 4em;
+  text-transform: uppercase;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+.rate {
+  margin-top: 1%;
+  display: block;
+} 
+
+.genere {
+  margin-top: 1%;
+}
+
+.genereTitle {
+  margin-right: 1%;
+}
+
+.trailer {
+  margin-bottom: 1%;
+}
+
+.ant-col-5 {
+  min-height: 450px;
+}
+
+.ant-card-bordered {
+  border: none;
+}
+
+.ant-col-5 {
+  width: auto;
+}
+
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item, .ant-menu-dark.ant-menu-horizontal > .ant-menu-submenu {
+  font-family: 'Noto Sans', sans-serif;
+  text-transform: uppercase;
+}
