@@ -1,9 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from './App';
+import sinon from 'sinon';
+import { mount } from 'enzyme';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe('<App />', () => {
+
+  const history = {
+    push: jest.fn(),
+  }
+
+  it('calls componentDidMount', () => {
+    sinon.spy(App.prototype, 'componentDidMount');
+    const wrapper = mount(<App history={history} />);
+    expect(App.prototype.componentDidMount.calledOnce).to.equal(true);
+  });
+
 });
