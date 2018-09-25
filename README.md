@@ -47,11 +47,12 @@ npm install
 
 ###### KNOWN BUG:
 
-- Navigation tab from deeper level doesn't work - need fixing
+- Some css issues - eg, showing person icon on placeholder of TVs, movies, no margin on top etc
 
 
 ###### TODO:
 
-- Storybook would be nice way to debug....(First needs upgrtading react!)
+- Add Storybook ....(First needs upgrtading react!)
 - Add sass compiliation, currently only importing css...
 - Unit tests to be completed
+- Should it be auto-complete rather than render on click? 
