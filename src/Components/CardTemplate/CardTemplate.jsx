@@ -4,29 +4,39 @@ import { Link } from 'react-router-dom'
 import { Card } from 'antd'
 
 type Props = {
-  name: number,
+  name: string,
   date: string, 
   vote: number,
   image: number, 
-  id: number
+  id: number,
+  type: string
 }
 
-const renderInfo = ({ date, vote }: Props) => {
+const renderInfo = (date, vote) => {
+  const voteInfo = !vote ? 'No vote yet' : vote;
   if (date !== null) {
-    return <p>{`Date: ${date} || Votes: ${vote}`}</p>
+    return <p>{`Date: ${date} | Votes: ${voteInfo}`}</p>
   } 
 }
 
-const CardTamplate = ({ name, date, vote, image, id }: Props) => (
+const renderImage = (name, image) => {
+  if (image !== null) {
+    return  <img alt={name} width='100%' src={`https://image.tmdb.org/t/p/w500${image}`} />
+  } else {
+    return  <div class="no_image_holder glyphicon glyphicon-user"></div>
 
-  <Link to={`/movie/${id}`}>
+  }
+}
+
+const CardTamplate = ({ date, image, vote, name, id, type }: Props) => (
+  <Link to={`/result/${id}/${type}`}>
     <Card style={{ width: 240 }} bodyStyle={{ padding: 0 }}>
       <div className='custom-image'>
-        <img alt={name} width='100%' src={`https://image.tmdb.org/t/p/w500${image}`} />
+       {renderImage(name, image)}
       </div>
       <div className='custom-card'>
         <h3>{name}</h3>
-        <p>{renderInfo}</p>
+        <p>{renderInfo(date, vote)}</p>
       </div>
     </Card>
   </Link>

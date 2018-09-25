@@ -53,11 +53,12 @@ export default class Showfilms extends Component {
               return (
                 <Col className='gutter-row' span={5} offset={1} key={uuidv4()}>
                   <CardTemplate
-                    name={item.title}
-                    date={item.release_date || null}
-                    vote={item.vote_average}
-                    image={item.poster_path || item.profile_path} 
+                    name={item.title || item.name} // title for a movie, name for TV program it seems.. 
+                    date={item.release_date || null} // actors search does not provide release date..
+                    vote={item.vote_average || null}
+                    image={item.poster_path || item.profile_path || null} // poster for movie, profile for person
                     id={item.id}
+                    type={item.media_type || 'discover'} 
                   />
                 </Col>
               )

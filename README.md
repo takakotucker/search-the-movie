@@ -45,7 +45,13 @@ npm install
 
 ---
 
+###### KNOWN BUG:
+
+- Navigation tab from deeper level doesn't work - need fixing
+
+
 ###### TODO:
 
 - Storybook would be nice way to debug....(First needs upgrtading react!)
 - Add sass compiliation, currently only importing css...
+- Unit tests to be completed

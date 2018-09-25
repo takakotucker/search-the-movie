@@ -10,11 +10,16 @@ export default {
     return axios.get(url).then(info => info.data)
   },
   getSearch: (query: string) => {
-    const url = `https://api.themoviedb.org/3/search/multi?query=${query}&api_key=${apiKey}`
+    const url = `https://api.themoviedb.org/3/search/multi?query=${query}&api_key=${apiKey}&append_to_response=videos`
     return axios.get(url).then(info => info.data)
   },
   getMovieById: (movieId: number) => {
     const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&append_to_response=videos`
+    return axios.get(url).then(info => info.data)
+  },
+
+  getTvById: (tvId: number) => {
+    const url = `https://api.themoviedb.org/3/tv/${tvId}?api_key=${apiKey}&append_to_response=videos`
     return axios.get(url).then(info => info.data)
   },
   getPersonById: (personId: number) => {
@@ -22,7 +27,7 @@ export default {
     return axios.get(url).then(info => info.data)
   },
   getMostVoted: () => {
-    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=vote_average.asc&include_adult=true&include_video=false&page=1`
+    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=vote_average.asc&include_adult=false&include_video=false&page=1`
     return axios.get(url).then(info => info.data)
   }
 }

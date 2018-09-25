@@ -27,8 +27,9 @@ export default class SearchForm extends Component {
     return (
       <Row>
         <Col span={14} offset={5}>
+        <h2>Find your movie or even a person...</h2>
           <form onSubmit={this.handleSubmit}>
-            <Input className='input' placeholder='Search a film or an actor...' onChange={this.handleChange} />
+            <Input className='input' placeholder='Search for a movie, a tv show or a person...' onChange={this.handleChange} />
             <Button type="primary" icon="search" onClick={this.handleSubmit}>Search</Button>
           </form>
         </Col>

@@ -1,5 +1,7 @@
 
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+@import url('https://fonts.googleapis.com/css?family=Glyphicons+Regular');
+@import url('https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css');
+
 
 img {
   margin-top: 4%;
@@ -8,9 +10,11 @@ img {
 h1 {
   color: #444;
   margin-top: 2%;
-  font-size: 4em;
-  text-transform: uppercase;
-  font-family: 'Noto Sans', sans-serif;
+  font-size: 3.5em;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 hr {
@@ -40,7 +44,7 @@ hr {
 }
 
 .ant-col-5 {
-  min-height: 450px;
+  min-height: 500px;
 }
 
 .ant-card-bordered {
@@ -51,12 +55,43 @@ hr {
   width: auto;
 }
 
-body {
-  font-family: 'Noto Sans', sans-serif;
-}
-
 
 .ant-menu-dark.ant-menu-horizontal > .ant-menu-item, .ant-menu-dark.ant-menu-horizontal > .ant-menu-submenu {
-  font-family: 'Noto Sans', sans-serif;
   text-transform: uppercase;
+}
+
+.no_image_holder {
+  display: inline-block;
+  text-align: center;
+  background-color: #dbdbdb;
+  color: #b5b5b5;
+  box-sizing: border-box;
+  font-size: 1em;
+  border-radius: 4px;
+  border: 1px solid #d7d7d7;
+  background: #ccc;
+  width: 100%;
+  height: 360px;
+  padding-top: 110px;
+}
+
+.glyphicon-user:before {
+  font-size: 10em;
+}
+
+.custom-card h3 {
+  margin-top: 20px;
+  font-size: 1.5em;
+}
+
+.ant-input, .ant-btn {
+  height: 38px;
+}
+
+.ant-input {
+   margin-top: 2%;
+}
+
+.ant-row h2 {
+  margin-top: 50px;
 }
