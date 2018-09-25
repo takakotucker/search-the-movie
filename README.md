@@ -1,4 +1,4 @@
-# Movie Finder (by movie or actor)
+# Movie Finder (by movie, TV or person)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 * `flow` is used to check types -> [https://flow.org/en/docs/getting-started/]
