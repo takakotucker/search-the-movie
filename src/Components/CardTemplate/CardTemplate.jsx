@@ -15,7 +15,7 @@ type Props = {
 const renderInfo = (date, vote) => {
   const voteInfo = !vote ? 'No vote yet' : vote;
   if (date !== null) {
-    return <p>{`Date: ${date} | Votes: ${voteInfo}`}</p>
+    return `Date: ${date} | Votes: ${voteInfo}`
   } 
 }
 
@@ -23,7 +23,7 @@ const renderImage = (name, image) => {
   if (image !== null) {
     return  <img alt={name} width='100%' src={`https://image.tmdb.org/t/p/w500${image}`} />
   } else {
-    return  <div class="no_image_holder glyphicon glyphicon-user"></div>
+    return  <div className="no_image_holder glyphicon glyphicon-user"></div>
 
   }
 }
