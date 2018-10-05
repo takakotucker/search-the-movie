@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CardTemplate from '../CardTemplate/CardTemplate'
+import CardPersonTemplate from '../CardTemplate/CardPersonTemplate'
 import Api from '../../Services/dataService'
 import { Row, Col } from 'antd'
 import uuidv4 from 'uuid/v4'
@@ -51,13 +51,11 @@ export default class ShowPeople extends Component {
             this.state.results.map(item => {
               return (
                 <Col className='gutter-row' span={5} offset={1} key={uuidv4()}>
-                  <CardTemplate
-                    name={item.title || item.name} // title for a movie, name for TV program it seems.. 
-                    date={item.release_date || null} // actors search does not provide release date..
-                    vote={item.vote_average || null}
-                    image={item.poster_path || item.profile_path || null} // poster for movie, profile for person
+                  <CardPersonTemplate
+                    name={item.name || null} // title for a movie, name for TV program it seems.. 
+                    image={item.profile_path || null}
                     id={item.id}
-                    type={item.media_type || 'movie'} 
+                    type={'person'} 
                   />
                 </Col>
               )

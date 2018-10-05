@@ -15,7 +15,7 @@ export default {
     return axios.get(url).then(info => info.data)
   },
   getPeople: (category: string) => {
-    const url = `${movieDbUri}/people/${category}?api_key=${apiKey}&language=en-US&page=1`
+    const url = `${movieDbUri}/person/${category}?api_key=${apiKey}&language=en-US&page=1`
     return axios.get(url).then(info => info.data)
   },
   getSearch: (query: string) => {

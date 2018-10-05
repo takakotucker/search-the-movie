@@ -4,6 +4,7 @@ import { Row, Col, Rate, Tag } from 'antd'
 import YouTube from 'react-youtube'
 import Utils from '../../Services/utilsService'
 import Api from '../../Services/dataService'
+import ProfileImg from '../Image/ProfileImg'
 
 import './ServiceContents.css' // To Do: should add it to build process...
 
@@ -34,34 +35,26 @@ export default class Movie extends Component <State> {
     }
   }
 
+  
+
   componentDidMount () {
     const idItem = parseInt(this.props.match.params.id, 10)
-    const mediaType = this.props.match.params.type
 
       Api.getMovieById(idItem)
-      .then(data => {
-        console.log('dataApi', data)
-        this.setState({
-          data: data,
-          urlImage: data.poster_path || null,
-          name: data.title,
-          stars: data.vote_average / 2,
-          description: data.overview || `Information for movie "${data.name}" is not available`,
-          genres: (data.genres: Array<number>),
-          release_date: data.release_date,
-          videoId: data.videos.results[0] ? data.videos.results[0].key : null
+        .then(data => {
+          console.log('dataApi', data)
+          this.setState({
+            data: data,
+            urlImage: data.poster_path || null,
+            name: data.title,
+            stars: data.vote_average / 2,
+            description: data.overview || `Information for movie "${data.name}" is not available`,
+            genres: (data.genres: Array<number>),
+            release_date: data.release_date,
+            videoId: data.videos.results[0] ? data.videos.results[0].key : null
+          })
         })
-      })
    
-  }
-
-  renderImage (name, image) {
-    if (image !== null) {
-      return  <img alt={name} width='100%' src={`https://image.tmdb.org/t/p/w500${image}`} />
-    } else {
-      return  <div class="no_image_holder glyphicon glyphicon-user"></div>
-  
-    }
   }
   
   renderVideo (videoId) {
@@ -80,7 +73,7 @@ export default class Movie extends Component <State> {
     return (
       <Row theme='dark'>
         <Col span={8} offset={1} >
-         {this.renderImage(this.state.name, this.state.urlImage)}
+         <ProfileImg name={this.state.name} image={this.state.urlImage}/>
         </Col>
         <Col theme='dark' span={12} offset={1}>
           <h1>{this.state.name}</h1>

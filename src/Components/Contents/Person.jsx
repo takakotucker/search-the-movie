@@ -1,19 +1,15 @@
 /* @flow */
 import React, { Component } from 'react'
-import { Row, Col, Rate, Tag } from 'antd'
+import { Row, Col } from 'antd'
 import Api from '../../Services/dataService'
+import ProfileImg from '../Image/ProfileImg'
 
 import './ServiceContents.css'
 
 type State = {
   name: number,
-  description: string,
-  urlImage: string,
-  stars: number,
-  genres: array,
-  release_date: string,
-  videoId: number,
-  media_type: string
+  biography: string,
+  urlImage: string
 }
 
 export default class Movie extends Component <State> {
@@ -22,13 +18,8 @@ export default class Movie extends Component <State> {
 
     this.state = {
       name: '',
-      description: '',
-      urlImage: '',
-      stars: 0,
-      genres: [],
-      release_date: '',
-      videoId: 0,
-      media_type: ''
+      biography: '',
+      urlImage: ''
     }
   }
 
@@ -42,35 +33,30 @@ export default class Movie extends Component <State> {
           data: data,
           urlImage: data.poster_path || data.profile_path,
           name: data.name,
-          description: data.biography || `Information for ${data.name} is not available`,
-          genres: [],
-          videoId: null
+          place_of_birth: data.place_of_birth,
+          biography: data.biography || `Information for ${data.name} is not available`
         })
       })
    
   }
 
-  renderImage (name, image) {
-    if (image !== null) {
-      return  <img alt={name} width='100%' src={`https://image.tmdb.org/t/p/w500${image}`} />
-    } else {
-      return  <div className="no_image_holder glyphicon glyphicon-user"></div>
-  
-    }
-  }
-  
-
   render () {
     return (
       <Row theme='dark'>
         <Col span={8} offset={1} >
-         {this.renderImage(this.state.name, this.state.urlImage)}
+          <ProfileImg name={this.state.name} image={this.state.urlImage}/>
         </Col>
         <Col theme='dark' span={12} offset={1}>
           <h1>{this.state.name}</h1>
           <hr />
-          <strong> Description: </strong>
-          <div>{this.state.description}</div>
+             <div>
+               <strong> Place of birth: </strong>
+              {this.state.place_of_birth}
+              </div>
+             <div> 
+              <strong> Biography: </strong>
+              {this.state.biography}
+             </div>
           <hr />
         </Col>
       </Row>

@@ -9,7 +9,7 @@ import Person from '../Contents/Person'
 import ShowMovies from '../ShowLists/ShowMovies'
 import ShowTvshows from '../ShowLists/ShowTvshows'
 import ShowPeople from '../ShowLists/ShowPeople'
-
+import ShowMulti from '../ShowLists/ShowMulti'
 
 const Routes = () => (
   <Switch>
@@ -44,12 +44,12 @@ const Routes = () => (
     )} />
 
     <Route exact path='/search/:query' render={
-      props => (<ShowMovies currentPage='Search Results' {...props} />
+      props => (<ShowMulti currentPage='Search Results' {...props} />
     )} />
 
-    <Route exact path='/result/:id/movie' component={Movie} />
-    <Route exact path='/result/:id/tv' component={Tv} />
-    <Route exact path='/result/:id/person' component={Person} />
+    <Route exact path='/search/movie/:id' component={Movie} />
+    <Route exact path='/search/tv/:id' component={Tv} />
+    <Route exact path='/search/person/:id' component={Person} />
 
   </Switch>
 )

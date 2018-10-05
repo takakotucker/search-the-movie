@@ -41,7 +41,7 @@ export default class Navbar extends Component {
         </SubMenu>
           <Menu.Item key="setting:5">
             <Link to='/people'>  
-              <Icon type='heart-o' /> People
+             People
             </Link>
           </Menu.Item>
       </Menu>

@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { Row, Col, Rate, Tag } from 'antd'
 import Utils from '../../Services/utilsService'
 import Api from '../../Services/dataService'
+import ProfileImg from '../Image/ProfileImg'
 
 import './ServiceContents.css' // To Do: should add it to build process...
 
@@ -12,8 +13,7 @@ type State = {
   urlImage: string,
   stars: number,
   genres: array,
-  release_date: string,
-  videoId: number
+  release_date: string
 }
 
 export default class Movie extends Component <State> {
@@ -26,8 +26,7 @@ export default class Movie extends Component <State> {
       urlImage: '',
       stars: 0,
       genres: [],
-      release_date: '',
-      videoId: 0
+      release_date: ''
     }
   }
 
@@ -43,22 +42,12 @@ export default class Movie extends Component <State> {
           name: data.name,
           stars: data.vote_average / 2,
           description: data.overview  || `Information for TV propgram "${data.name}" is not available`,
-          genres: [],
-          release_date: data.release_date,
-          videoId: null
+          genres: (data.genres: Array<number>),
+          release_date: data.release_date
 
         })
       })
    
-  }
-
-  renderImage (name, image) {
-    if (image !== null) {
-      return  <img alt={name} width='100%' src={`https://image.tmdb.org/t/p/w500${image}`} />
-    } else {
-      return  <div class="no_image_holder glyphicon glyphicon-user"></div>
-  
-    }
   }
 
 
@@ -66,7 +55,7 @@ export default class Movie extends Component <State> {
     return (
       <Row theme='dark'>
         <Col span={8} offset={1} >
-         {this.renderImage(this.state.name, this.state.urlImage)}
+          <ProfileImg name={this.state.name} image={this.state.urlImage}/> 
         </Col>
         <Col theme='dark' span={12} offset={1}>
           <h1>{this.state.name}</h1>
