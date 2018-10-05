@@ -1,6 +1,5 @@
 # Movie Finder (by movie, TV or person)
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 * `flow` is used to check types -> [https://flow.org/en/docs/getting-started/]
 * `antd` React UI library is used -> [https://ant.design/docs/react/introduce?utm_source=next.36kr.com]
 
@@ -61,4 +60,3 @@ npm install
 - Add Storybook ....(First needs upgrtading react!)
 - Add sass compiliation, currently only importing css...
 - Unit tests to be completed
-- Should it be auto-complete rather than render on click? 

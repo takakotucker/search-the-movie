@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import CardTemplate from '../CardTemplate/CardTemplate'
-import Api from '../../Services/dataService.js'
+import Api from '../../Services/dataService'
 import { Row, Col } from 'antd'
 import uuidv4 from 'uuid/v4'
-import './Showfilms.css'
 
-export default class Showfilms extends Component {
+export default class ShowMovies extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -58,7 +57,7 @@ export default class Showfilms extends Component {
                     vote={item.vote_average || null}
                     image={item.poster_path || item.profile_path || null} // poster for movie, profile for person
                     id={item.id}
-                    type={item.media_type || 'discover'} 
+                    type={item.media_type || 'movie'} 
                   />
                 </Col>
               )

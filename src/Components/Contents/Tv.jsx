@@ -1,11 +1,10 @@
 /* @flow */
 import React, { Component } from 'react'
 import { Row, Col, Rate, Tag } from 'antd'
-import YouTube from 'react-youtube'
 import Utils from '../../Services/utilsService'
 import Api from '../../Services/dataService'
 
-import './Movie.css' // To Do: should add it to build process...
+import './ServiceContents.css' // To Do: should add it to build process...
 
 type State = {
   name: number,
@@ -14,8 +13,7 @@ type State = {
   stars: number,
   genres: array,
   release_date: string,
-  videoId: number,
-  media_type: string
+  videoId: number
 }
 
 export default class Movie extends Component <State> {
@@ -29,31 +27,14 @@ export default class Movie extends Component <State> {
       stars: 0,
       genres: [],
       release_date: '',
-      videoId: 0,
-      media_type: ''
+      videoId: 0
     }
   }
 
   componentDidMount () {
     const idItem = parseInt(this.props.match.params.id, 10)
-    const mediaType = this.props.match.params.type
-    if (mediaType === 'person') {
-     
-      Api.getPersonById(idItem)
-      .then(data => {
-        console.log('dataApi', data)
-        this.setState({
-          data: data,
-          urlImage: data.poster_path || data.profile_path,
-          name: data.name,
-          description: data.biography || `Information for ${data.name} is not available`,
-          genres: [],
-          videoId: null
-        })
-      })
 
-    } else if (mediaType === 'tv') {
-      Api.getTvById(idItem)
+    Api.getTvById(idItem)
       .then(data => {
         console.log('dataApi', data)
         this.setState({
@@ -68,25 +49,6 @@ export default class Movie extends Component <State> {
 
         })
       })
-
-    } else {
-
-      Api.getMovieById(idItem)
-      .then(data => {
-        console.log('dataApi', data)
-        this.setState({
-          data: data,
-          urlImage: data.poster_path || null,
-          name: data.title,
-          stars: data.vote_average / 2,
-          description: data.overview || `Information for movie "${data.name}" is not available`,
-          genres: (data.genres: Array<number>),
-          release_date: data.release_date,
-          videoId: data.videos.results[0] ? data.videos.results[0].key : null
-        })
-      })
-
-    }
    
   }
 
@@ -98,18 +60,7 @@ export default class Movie extends Component <State> {
   
     }
   }
-  
-  renderVideo (videoId) {
-    if (videoId !== null) {
-      return <div>
-        <hr />
-        <div className='trailer'>
-          <strong> Trailer: </strong>
-        </div>
-        <YouTube videoId={this.state.videoId} />
-      </div>
-    } 
-  }
+
 
   render () {
     return (
@@ -130,7 +81,6 @@ export default class Movie extends Component <State> {
             {this.state.genres.map(genere => <Tag color={Utils.randomColor()} key={genere.id}>{genere.name}</Tag>)}
           </div>
           <Rate className='rate' value={this.state.stars} />
-            {this.renderVideo(this.state.videoId)}
         </Col>
       </Row>
     )
