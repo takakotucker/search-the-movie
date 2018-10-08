@@ -1,6 +1,6 @@
 {
     "name": "search-the-movie",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "private": true,
     "homepage": "https://takakotucker.github.io/search-the-movie",
     "dependencies": {
@@ -27,3 +27,4 @@
         "sinon": "^4.0.1"
     }
   }
+  
