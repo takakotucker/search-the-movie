@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Api from '../../Services/dataService'
+import CardAutoCompleteTemplate from '../CardTemplate/CardAutoCompleteTemplate'
+
 
 export default class AutoComplete extends Component {
   constructor (props) {
@@ -7,44 +9,54 @@ export default class AutoComplete extends Component {
 
     this.state = {
       value: '',
+      isOn: props.isOn,
+      results: []
     }
-  }
 
-  handleApiCall = async (val) =>  {
-    try {
-      Api.getSearch(val)
-      .then(data => {
-        this.setState({
-          results: data.results
-        })
-      })
-    } catch (error) {
-      console.error(error);
-    }
+
+  }
+  
+  handleApiCall (props) {
+      Api.getSearch(this.props.value)
+          .then(data => {
+            this.setState({
+              results: data.results
+            })
+          })
   }
 
   componentDidMount () {
-    this.handleApiCall(this.props)
+    this.handleApiCall(this.props.value)
   }
 
 
   render () {
-    return (
-       <div label="Find a movie">
-        <div>
-              <div className="media">
-                    <div class="media-left">
-                        <img width="32" src={`https://image.tmdb.org/t/p/w500/${this.props.option.poster_path}`} />
-                    </div>
-                    <div className="media-content">
-                        { this.props.option.title }
-                        <br />
-                          Released at { this.props.option.release_date },
-                          rated <strong>{ this.props.option.vote_average }</strong>
-                    </div>     
-              </div>
-        </div>
-      </div>
-    )
+    if (this.state.isOn) {
+      return (
+        <div label="Find a movie">
+         <div>
+               <div className="media">
+                      <div className="media-content">
+                       {
+                         this.state.results.map(item => {
+                           return (
+                               <CardAutoCompleteTemplate
+                                 name={item.title || item.name || null}
+                                 id={item.id}
+                                 type={item.media_type || 'movie'} 
+                               />
+                           )
+                         })
+                       }
+                     </div>     
+               </div>
+         </div>
+       </div>
+     )
+
+    } else {
+      return <div></div>
+    }
+
   }
 }

@@ -57,6 +57,5 @@ npm install
 
 ###### TODO:
 
-- Add Storybook ....(First needs upgrtading react!)
 - Add sass compiliation, currently only importing css...
 - Unit tests to be completed

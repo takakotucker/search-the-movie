@@ -43,10 +43,10 @@ export default class ShowPeople extends Component {
       <div>
         <Row>
           <Col span={12} offset={6}>
-            <h1 className='title'>{ this.props.currentPage } </h1>
+            <h1 className='title people'>{ this.props.currentPage } </h1>
           </Col>
         </Row>
-        <Row gutter={24}>
+        <Row>
           {
             this.state.results.map(item => {
               return (

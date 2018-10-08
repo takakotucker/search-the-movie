@@ -11,13 +11,16 @@ import ShowTvshows from '../ShowLists/ShowTvshows'
 import ShowPeople from '../ShowLists/ShowPeople'
 import ShowMulti from '../ShowLists/ShowMulti'
 
+
 const Routes = () => (
   <Switch>
-    <Route exact path='/' component={Home} />
+    <Route exact path='/'  render={
+      props => (<Home currentPage='Popular Movies' category='popular' {...props} />
+    )} />
 
     {/* routes for Movies */}
     <Route exact path='/movies' render={
-      props => (<ShowMovies currentPage='popular Movies' category='popular'{...props} />
+      props => (<ShowMovies currentPage='Popular Movies' category='popular'{...props} />
     )} />
     <Route exact path='/movies/popular' render={
       props => (<ShowMovies currentPage='Popular Movies' category='popular'{...props} />

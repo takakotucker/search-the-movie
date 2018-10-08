@@ -1,10 +1,17 @@
-import React from 'react'
-import SearchForm from '../SearchForm/SearchForm'
+import React, { Component } from 'react'
+import ShowMulti from '../ShowLists/ShowMulti'
 
-const Home = () => (
-  <div>
-    <SearchForm />
-  </div>
-)
 
-export default Home
+export default class Home extends Component <State> {
+  constructor (props) {
+    super(props)
+  }
+
+
+  render () {
+    return (
+      <ShowMulti {...this.props} />
+    )
+  }
+
+}

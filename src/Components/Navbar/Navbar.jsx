@@ -9,6 +9,7 @@ const SubMenu = Menu.SubMenu;
 export default class Navbar extends Component {
   render () {
     return (
+      <div>
       <Menu mode='horizontal' theme='dark'>
         <Menu.Item >
           <Link to='/'>
@@ -45,6 +46,7 @@ export default class Navbar extends Component {
             </Link>
           </Menu.Item>
       </Menu>
+      </div>
     )
   }
 }
